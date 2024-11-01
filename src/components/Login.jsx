@@ -28,7 +28,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/admins/find", { email, password })
+      .post("https://classroom-tracker-api.vercel.app/admins/find", { email, password })
       .then((result) => {
         if (result.data.status) {
           localStorage.setItem("authToken", result.data.token);
