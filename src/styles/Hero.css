@@ -1,0 +1,118 @@
+.bug {
+  animation: search 5s ease-in-out 1;
+}
+.bug:hover {
+  animation: rotate 3s ease-in-out infinite;
+}
+@keyframes rotate {
+  from {
+    transform: rotateY(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+@keyframes search {
+  0% {
+    transform: translateX(400px);
+  }
+  25% {
+    transform: translateY(400px);
+  }
+  50% {
+    transform: translateX(-200px);
+  }
+  75% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateX(200px);
+  }
+}
+
+.start-btn {
+  transition: all 0.3s ease-in-out;
+  background-color: black;
+  color: bisque;
+}
+.start-btn:hover {
+  color: black;
+  background-color: transparent;
+}
+.Download-button {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 10px 20px;
+  color: white;
+  background: black;
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em black;
+  letter-spacing: 0.05em;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.Download-button svg {
+  margin-right: 8px;
+  width: 25px;
+}
+
+.Download-button:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em black;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.Download-button:active {
+  box-shadow: 0 0.3em 1em -0.5em #3bf682;
+}
+
+.Download-button::before {
+  content: "";
+  width: 4px;
+  height: 40%;
+  background-color: white;
+  position: absolute;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  left: 0;
+  transition: all 0.2s;
+}
+
+.Download-button::after {
+  content: "";
+  width: 4px;
+  height: 40%;
+  background-color: white;
+  position: absolute;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  right: 0;
+  transition: all 0.2s;
+}
+
+.Download-button:hover::before,
+.Download-button:hover::after {
+  height: 0;
+}
+
+.Download-button:hover::before {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  transform: translate(5px, -15px) rotate(45deg);
+}
+
+.Download-button:hover::after {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  transform: translate(-5px, 15px) rotate(45deg);
+}
