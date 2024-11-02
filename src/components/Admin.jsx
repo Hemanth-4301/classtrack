@@ -186,7 +186,7 @@ function Admin() {
           src={admin}
           height={400}
           width={400}
-          alt="Admin workspace"
+          alt="Admin workspace tag"
         />
         <div className="w-full md:w-1/2 mt-5 md:mt-0">
           <div className="overflow-x-auto">
@@ -197,7 +197,7 @@ function Admin() {
               border={2}
               style={{
                 borderCollapse: "collapse",
-                textAlign: "center",
+                textAlign: "center ",
                 fontFamily: "Roboto Slab, serif",
                 width: "100%",
               }}
