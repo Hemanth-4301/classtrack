@@ -38,16 +38,14 @@ function Admin() {
           navigate("/login");
         }
       }
-    }, 600000 * 24);
+    }, 60000 * 60 * 24);
 
     return () => clearInterval(interval);
   }, [navigate]);
 
   const fetchAdmins = async () => {
     try {
-      const result = await axios.get(
-        "https://classroom-tracker-api.vercel.app/admins/get"
-      );
+      const result = await axios.get("http://localhost:5000/admins/get");
       setAdmins(result.data);
     } catch (err) {
       console.log(err);
@@ -59,9 +57,7 @@ function Admin() {
 
   const fetchClassrooms = async () => {
     try {
-      const result = await axios.get(
-        "https://classroom-tracker-api.vercel.app/classrooms/get"
-      );
+      const result = await axios.get("http://localhost:5000/classrooms/get");
       setClassrooms(result.data);
     } catch (err) {
       console.log(err);
@@ -71,7 +67,7 @@ function Admin() {
   const handleAddAdmin = async (adminData) => {
     try {
       const result = await axios.post(
-        "https://classroom-tracker-api.vercel.app/admins/add",
+        "http://localhost:5000/admins/add",
         adminData
       );
       alert(result.data.message);
@@ -87,7 +83,7 @@ function Admin() {
   const handleDeleteAdmin = async (adminId) => {
     try {
       const result = await axios.delete(
-        `https://classroom-tracker-api.vercel.app/delete/${adminId}`
+        `http://localhost:5000/admins/delete/${adminId}`
       );
       alert(result.data.message);
       setAdmins((prevAdmins) =>
@@ -102,7 +98,7 @@ function Admin() {
   const handleAddClassroom = async (classroomData) => {
     try {
       const result = await axios.post(
-        "https://classroom-tracker-api.vercel.app/classrooms/add",
+        "http://localhost:5000/classrooms/add",
         classroomData
       );
       setClassrooms((prevClassrooms) => [...prevClassrooms, result.data]);
@@ -117,7 +113,7 @@ function Admin() {
   const handleUpdateClassroom = async (classroomData) => {
     try {
       const result = await axios.put(
-        `https://classroom-tracker-api.vercel.app/classrooms/update/${currentClassroom._id}`,
+        `http://localhost:5000/classrooms/update/${currentClassroom._id}`,
         classroomData
       );
       setClassrooms((prevClassrooms) =>
@@ -142,7 +138,7 @@ function Admin() {
   const handleDeleteClassroom = async (classroomId) => {
     try {
       const result = await axios.delete(
-        `https://classroom-tracker-api.vercel.app/classrooms/delete/${classroomId}`
+        `http://localhost:5000/classrooms/delete/${classroomId}`
       );
       alert(result.data.message);
       setClassrooms((prevClassrooms) =>
@@ -154,6 +150,12 @@ function Admin() {
       alert("Failed to delete classroom");
     }
   };
+
+  // Sort classrooms by day before rendering
+  const sortedClassrooms = classrooms.sort((a, b) => {
+    const daysOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]; // Adjust this as per your requirements
+    return daysOrder.indexOf(a.day) - daysOrder.indexOf(b.day);
+  });
 
   return (
     <>
@@ -276,10 +278,7 @@ function Admin() {
                   >
                     List of Classrooms &nbsp;&nbsp;
                     <button
-                      onClick={() => {
-                        setCurrentClassroom(null);
-                        setIsClassroomModalOpen(true);
-                      }}
+                      onClick={() => setIsClassroomModalOpen(true)}
                       className="bg-green-600 text-white px-4 py-2 text-sm border-2 border-green-600 hover:bg-transparent hover:text-black rounded-lg"
                     >
                       Add Classroom
@@ -305,7 +304,7 @@ function Admin() {
                 </tr>
               </thead>
               <tbody>
-                {classrooms.map((classroom) => (
+                {sortedClassrooms.map((classroom) => (
                   <tr key={classroom._id}>
                     <td className="p-3 border border-gray-400">
                       {classroom.day}
@@ -322,11 +321,10 @@ function Admin() {
                     <td className="p-3 border border-gray-400">
                       <button
                         onClick={() => handleEditClassroom(classroom)}
-                        className="bg-blue-600 text-white px-4 py-2 text-sm border-2 border-blue-600 hover:bg-transparent hover:text-black rounded-lg"
+                        className="bg-blue-600 text-white px-4 py-2 text-sm border-2 border-blue-600 hover:bg-transparent hover:text-black rounded-lg mr-2"
                       >
                         Edit
                       </button>
-                      &nbsp;
                       <button
                         onClick={() => handleDeleteClassroom(classroom._id)}
                         className="bg-red-600 text-white px-4 py-2 text-sm border-2 border-red-600 hover:bg-transparent hover:text-black rounded-lg"
@@ -342,25 +340,18 @@ function Admin() {
         </div>
       </div>
 
-      {/* Admin Modal */}
       {isAdminModalOpen && (
         <AdminModal
-          isOpen={isAdminModalOpen}
           onClose={() => setIsAdminModalOpen(false)}
           onAddAdmin={handleAddAdmin}
         />
       )}
-
-      {/* Classroom Modal */}
       {isClassroomModalOpen && (
         <ClassroomModal
-          onClose={() => {
-            setIsClassroomModalOpen(false);
-            setCurrentClassroom(null);
-          }}
+          classroom={currentClassroom}
+          onClose={() => setIsClassroomModalOpen(false)}
           onAddClassroom={handleAddClassroom}
           onUpdateClassroom={handleUpdateClassroom}
-          classroom={currentClassroom}
         />
       )}
 

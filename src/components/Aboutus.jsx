@@ -43,7 +43,8 @@ function Aboutus() {
           dedicated to applying technology to solve real-world challenges. Under
           the guidance of our mentor, <b>Jayashree Mam</b>, we developed this
           project as our <b>minor project</b> to simplify the classroom
-          availability tracking problem for students and teachers alike. Our aim
+          availability tracking problem for students and teachers at{" "}
+          <b>The National Institute of Engineering (North Campus)</b>. Our aim
           is to create clear, effective tools that support the educational
           community.
         </motion.p>

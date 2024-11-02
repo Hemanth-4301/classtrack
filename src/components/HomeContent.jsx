@@ -30,11 +30,29 @@ function HomeContent() {
   const fetchVacantClassrooms = async (day) => {
     try {
       const response = await fetch(
-        `https://classroom-tracker-api.vercel.app/classrooms/vacant/${day}`
+        `http://localhost:5000/classrooms/vacant/${day}`
       );
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
-      setVacantClassrooms(data);
+
+      // Define a sorting order for the timings
+      const timingOrder = [
+        "9-10",
+        "10-11",
+        "11:30-12:30",
+        "12:30-1:30",
+        "2:30-3:30",
+        "3:30-4:30",
+      ];
+
+      // Sort data based on the timing order
+      const sortedData = data.sort((a, b) => {
+        return (
+          timingOrder.indexOf(a.duration) - timingOrder.indexOf(b.duration)
+        );
+      });
+
+      setVacantClassrooms(sortedData);
     } catch (error) {
       console.error("Error fetching vacant classrooms:", error);
     }
@@ -100,7 +118,7 @@ function HomeContent() {
         <div className="mt-4 w-full overflow-x-auto">
           {loader && (
             <div className="flex justify-center items-center m-5">
-              <div className="loader"></div> {/* Your loader component */}
+              <div className="loader"></div>
             </div>
           )}
 
@@ -159,12 +177,21 @@ function HomeContent() {
                     ))
                   ) : (
                     <tr>
-                      <td
-                        colSpan="3"
-                        className="border border-black px-4 py-2 text-center text-red-500"
-                      >
-                        No vacant classrooms available.
-                      </td>
+                      {selectedDay == "Saturday" || selectedDay == "Sunday" ? (
+                        <td
+                          colSpan="3"
+                          className="border border-black px-4 py-2 text-center text-green-600"
+                        >
+                          All classrooms are free
+                        </td>
+                      ) : (
+                        <td
+                          colSpan="3"
+                          className="border border-black px-4 py-2 text-center text-red-500"
+                        >
+                          No vacant classrooms available.
+                        </td>
+                      )}
                     </tr>
                   )}
                 </tbody>
@@ -174,7 +201,7 @@ function HomeContent() {
         </div>
       </div>
 
-      <div className="bg-[#e0e0e0] pb-4">
+      <div className="bg-[#e0e0e0] pb-4 pt-5 lg:pt-10">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -238,54 +265,109 @@ function HomeContent() {
             className="mission"
           >
             <h1>
-              <b>Promote Transparency</b>
+              <b>Foster Collaboration</b>
             </h1>
             <h2>
-              Keep a clear record of classroom bookings to ensure accountability
-              and fair usage.
+              Facilitate sharing of classrooms and resources among different
+              departments.
             </h2>
           </motion.div>
         </div>
-      </div>
 
-      <div className="bg-[#e0e0e0]">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-center p-4 bg-slate-300 text-xl md:text-2xl lg:text-3xl"
-        >
-          <b>Tech stack</b>
-        </motion.h1>
+        <div className="bg-[#e0e0e0] mt-10 lg:mt-20 overflow-hidden">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-center p-4 bg-slate-300 text-xl md:text-2xl lg:text-3xl "
+          >
+            <b>Tech stack</b>
+          </motion.h1>
 
-        <div className="flex flex-wrap  justify-evenly items-center py-10">
-          <motion.img
-            initial={{ opacity: 0, scale: 0.6 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
-            src={tech}
-            alt="Tech Stack Flowchart"
-            className="max-w-xs md:max-w-md lg:max-w-lg h-auto rounded-xl"
-          />
-          <div className="max-w-lg  md:text-left p-5">
-            <motion.p
-              initial={{ opacity: 0, scale: 0.6 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7 }}
-              className="p-5 text-left text-lg"
-              style={{
-                lineHeight: "1.6rem",
-              }}
-            >
-              This project uses a powerful mix of tools to build a responsive
-              and secure web app. The frontend is made with <b>React.js</b> for
-              flexible components and styled with <b>Tailwind CSS</b> for a
-              clean, responsive design. On the backend,<b> Node.js</b> and
-              Express.js work together to handle data efficiently, while
-              <b> MongoDB</b> stores our data securely and scales well. For
-              security, JWT is used for safe, token-based login sessions,
-              keeping user data protected.
-            </motion.p>
+          <div className="flex flex-wrap  justify-evenly items-center py-10 lg:my-10 ">
+            <div className="tech flex flex-col mx-2">
+              <motion.h1
+                whileHover={{ scale: 0.8 }}
+                initial={{
+                  opacity: 0.7,
+                  x: -90,
+                }}
+                whileInView={{ x: 0 }}
+                transition={{ duration: 0.4 }}
+                className="bg-white"
+              >
+                Tailwind css
+              </motion.h1>
+              <motion.h1
+                whileHover={{ scale: 0.8 }}
+                initial={{
+                  opacity: 0.7,
+                  x: 90,
+                }}
+                whileInView={{ x: 0 }}
+                transition={{ duration: 0.4 }}
+                className="bg-white"
+              >
+                Reactjs
+              </motion.h1>
+              <motion.h1
+                whileHover={{ scale: 0.8 }}
+                initial={{
+                  opacity: 0.7,
+                  x: -90,
+                }}
+                whileInView={{ x: 0 }}
+                transition={{ duration: 0.4 }}
+                className="bg-white"
+              >
+                Expressjs
+              </motion.h1>
+              <motion.h1
+                whileHover={{ scale: 0.8 }}
+                initial={{
+                  opacity: 0.7,
+                  x: 90,
+                }}
+                whileInView={{ x: 0 }}
+                transition={{ duration: 0.4 }}
+                className="bg-white"
+              >
+                Nodejs
+              </motion.h1>
+              <motion.h1
+                whileHover={{ scale: 0.8 }}
+                initial={{
+                  opacity: 0.7,
+                  x: -90,
+                }}
+                whileInView={{ x: 0 }}
+                transition={{ duration: 0.4 }}
+                className="bg-white"
+              >
+                MongoDb
+              </motion.h1>
+            </div>
+
+            <div className="max-w-xl  md:text-left p-4 lg:p-5">
+              <motion.p
+                initial={{ opacity: 0, scale: 0.6 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7 }}
+                className="p-5 text-left text-lg"
+                style={{
+                  lineHeight: "1.6rem",
+                }}
+              >
+                This project uses a powerful mix of tools to build a responsive
+                and secure web app. The frontend is made with <b>React.js</b>{" "}
+                for flexible components and styled with <b>Tailwind CSS</b> for
+                a clean, responsive design. On the backend,<b> Node.js</b> and
+                Express.js work together to handle data efficiently, while
+                <b> MongoDB</b> stores our data securely and scales well. For
+                security, JWT is used for safe, token-based login sessions,
+                keeping user data protected.
+              </motion.p>
+            </div>
           </div>
         </div>
       </div>

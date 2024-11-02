@@ -38,7 +38,7 @@ const ClassroomModal = ({
     setRoomNumber("");
     setLocation("");
     setVacant(true);
-    onClose();
+    onClose(); // Ensure the modal closes
   };
 
   return (
@@ -102,6 +102,7 @@ const ClassroomModal = ({
               required
               className="border rounded w-full px-2 py-1"
             >
+              <option>select location</option>
               <option value="Ground floor">Ground floor</option>
               <option value="1st floor">1st floor</option>
               <option value="2nd floor">2nd floor</option>
