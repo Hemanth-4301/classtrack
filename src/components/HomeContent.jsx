@@ -54,7 +54,7 @@ function HomeContent() {
 
       setVacantClassrooms(sortedData);
     } catch (error) {
-      console.error("Error fetching vacant classrooms:", error);
+      console.log("Error fetching vacant classrooms:", error);
     }
   };
 

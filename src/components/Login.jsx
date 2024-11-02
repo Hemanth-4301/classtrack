@@ -41,7 +41,10 @@ function Login() {
           alert(result.data.message);
         }
       })
-      .catch(() => alert("An error occurred. Please try again."));
+      .catch((err) => {
+        alert("An error occurred. Please try again.");
+        console.log(err);
+      });
   };
 
   useEffect(() => {
