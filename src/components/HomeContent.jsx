@@ -30,7 +30,7 @@ function HomeContent() {
   const fetchVacantClassrooms = async (day) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/classrooms/vacant/${day}`
+        `https://nie-classtrack.vercel.app/classrooms/vacant/${day}`
       );
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
