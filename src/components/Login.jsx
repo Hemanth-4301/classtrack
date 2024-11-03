@@ -28,7 +28,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://nie-classtrack.vercel.app/admins/find", {
+      .post("https://classtrack-api.vercel.app/admins/find", {
         email,
         password,
       })

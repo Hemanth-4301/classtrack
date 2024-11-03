@@ -46,7 +46,7 @@ function Admin() {
   const fetchAdmins = async () => {
     try {
       const result = await axios.get(
-        "https://nie-classtrack.vercel.app/admins/get"
+        "https://classtrack-api.vercel.app/admins/get"
       );
       setAdmins(result.data);
     } catch (err) {
@@ -60,7 +60,7 @@ function Admin() {
   const fetchClassrooms = async () => {
     try {
       const result = await axios.get(
-        "https://nie-classtrack.vercel.app/classrooms/get"
+        "https://classtrack-api.vercel.app/classrooms/get"
       );
       setClassrooms(result.data);
     } catch (err) {
@@ -71,7 +71,7 @@ function Admin() {
   const handleAddAdmin = async (adminData) => {
     try {
       const result = await axios.post(
-        "https://nie-classtrack.vercel.app/admins/add",
+        "https://classtrack-api.vercel.app/admins/add",
         adminData
       );
       alert(result.data.message);
@@ -87,7 +87,7 @@ function Admin() {
   const handleDeleteAdmin = async (adminId) => {
     try {
       const result = await axios.delete(
-        `https://nie-classtrack.vercel.app/admins/delete/${adminId}`
+        `https://classtrack-api.vercel.app/admins/delete/${adminId}`
       );
       alert(result.data.message);
       setAdmins((prevAdmins) =>
@@ -102,7 +102,7 @@ function Admin() {
   const handleAddClassroom = async (classroomData) => {
     try {
       const result = await axios.post(
-        "https://nie-classtrack.vercel.app/classrooms/add",
+        "https://classtrack-api.vercel.app/classrooms/add",
         classroomData
       );
       setClassrooms((prevClassrooms) => [...prevClassrooms, result.data]);
@@ -117,7 +117,7 @@ function Admin() {
   const handleUpdateClassroom = async (classroomData) => {
     try {
       const result = await axios.put(
-        `https://nie-classtrack.vercel.app/classrooms/update/${currentClassroom._id}`,
+        `https://classtrack-api.vercel.app/classrooms/update/${currentClassroom._id}`,
         classroomData
       );
       setClassrooms((prevClassrooms) =>
@@ -142,7 +142,7 @@ function Admin() {
   const handleDeleteClassroom = async (classroomId) => {
     try {
       const result = await axios.delete(
-        `https://nie-classtrack.vercel.app/classrooms/delete/${classroomId}`
+        `https://classtrack-api.vercel.app/classrooms/delete/${classroomId}`
       );
       alert(result.data.message);
       setClassrooms((prevClassrooms) =>
