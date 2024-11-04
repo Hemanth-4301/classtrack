@@ -45,9 +45,7 @@ function Admin() {
 
   const fetchAdmins = async () => {
     try {
-      const result = await axios.get(
-        "https://classtrack-api.vercel.app/admins/get"
-      );
+      const result = await axios.get("https://classtrack-api.vercel.app/admins/get");
       setAdmins(result.data);
     } catch (err) {
       console.log(err);
@@ -59,9 +57,7 @@ function Admin() {
 
   const fetchClassrooms = async () => {
     try {
-      const result = await axios.get(
-        "https://classtrack-api.vercel.app/classrooms/get"
-      );
+      const result = await axios.get("https://classtrack-api.vercel.app/classrooms/get");
       setClassrooms(result.data);
     } catch (err) {
       console.log(err);
