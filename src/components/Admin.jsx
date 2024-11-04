@@ -45,7 +45,9 @@ function Admin() {
 
   const fetchAdmins = async () => {
     try {
-      const result = await axios.get("https://classtrack-api.vercel.app/admins/get");
+      const result = await axios.get(
+        "https://classtrack-api.vercel.app/admins/get"
+      );
       setAdmins(result.data);
     } catch (err) {
       console.log(err);
@@ -57,7 +59,9 @@ function Admin() {
 
   const fetchClassrooms = async () => {
     try {
-      const result = await axios.get("https://classtrack-api.vercel.app/classrooms/get");
+      const result = await axios.get(
+        "https://classtrack-api.vercel.app/classrooms/get"
+      );
       setClassrooms(result.data);
     } catch (err) {
       console.log(err);
@@ -318,19 +322,21 @@ function Admin() {
                     <td className="p-3 border border-gray-400">
                       {classroom.vacant ? "Yes" : "No"}
                     </td>
-                    <td className="p-3 border border-gray-400 flex flex-warp gap-2">
-                      <button
-                        onClick={() => handleEditClassroom(classroom)}
-                        className="bg-blue-600 text-white px-4 py-2 text-sm border-2 border-blue-600 hover:bg-transparent hover:text-black rounded-lg mr-2"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => handleDeleteClassroom(classroom._id)}
-                        className="bg-red-600 text-white px-4 py-2 text-sm border-2 border-red-600 hover:bg-transparent hover:text-black rounded-lg"
-                      >
-                        Delete
-                      </button>
+                    <td className="p-3 border border-gray-400 ">
+                      <div className="flex flex-wrap gap-2 justify-center items-center">
+                        <button
+                          onClick={() => handleEditClassroom(classroom)}
+                          className="bg-blue-600 text-white px-4 py-2 text-sm border-2 border-blue-600 hover:bg-transparent hover:text-black rounded-lg mr-2"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDeleteClassroom(classroom._id)}
+                          className="bg-red-600 text-white px-4 py-2 text-sm border-2 border-red-600 hover:bg-transparent hover:text-black rounded-lg"
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
