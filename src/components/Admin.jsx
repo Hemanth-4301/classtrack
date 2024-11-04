@@ -155,9 +155,8 @@ function Admin() {
     }
   };
 
-  // Sort classrooms by day before rendering
   const sortedClassrooms = classrooms.sort((a, b) => {
-    const daysOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]; // Adjust this as per your requirements
+    const daysOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]; 
     return daysOrder.indexOf(a.day) - daysOrder.indexOf(b.day);
   });
 
