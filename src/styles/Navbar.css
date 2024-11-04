@@ -197,7 +197,7 @@ nav svg {
   margin-left: 20px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .theme-switch {
     margin-left: 28px;
     margin-top: 15px;
