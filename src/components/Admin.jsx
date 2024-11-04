@@ -318,7 +318,7 @@ function Admin() {
                     <td className="p-3 border border-gray-400">
                       {classroom.vacant ? "Yes" : "No"}
                     </td>
-                    <td className="p-3 border border-gray-400">
+                    <td className="p-3 border border-gray-400 flex flex-warp gap-2">
                       <button
                         onClick={() => handleEditClassroom(classroom)}
                         className="bg-blue-600 text-white px-4 py-2 text-sm border-2 border-blue-600 hover:bg-transparent hover:text-black rounded-lg mr-2"
