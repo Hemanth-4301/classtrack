@@ -194,10 +194,7 @@ function Admin() {
         />
         <div className="w-full md:w-1/2 mt-5 md:mt-0">
           <div className="overflow-x-auto">
-            <motion.table
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7 }}
+            <table
               border={2}
               style={{
                 borderCollapse: "collapse",
@@ -252,7 +249,7 @@ function Admin() {
                   </tr>
                 ))}
               </tbody>
-            </motion.table>
+            </table>
           </div>
         </div>
       </div>
@@ -261,10 +258,7 @@ function Admin() {
       <div className="p-5 text-lg md:text-2xl  flex flex-wrap justify-around items-center bg-gray-100 py-10 md:py-10 md:pb-20">
         <div className="w-full mt-5 md:mt-0">
           <div className="overflow-x-auto">
-            <motion.table
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7 }}
+            <table
               border={2}
               style={{
                 borderCollapse: "collapse",
@@ -341,7 +335,7 @@ function Admin() {
                   </tr>
                 ))}
               </tbody>
-            </motion.table>
+            </table>
           </div>
         </div>
       </div>
