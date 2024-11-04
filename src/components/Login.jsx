@@ -27,23 +27,30 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("https://classtrack-api.vercel.app/admins/find", {
+
+    fetch("https://classtrack-api.vercel.app/admins/find", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
         email,
         password,
-      })
+      }),
+    })
+      .then((response) => response.json())
       .then((result) => {
-        if (result.data.status) {
-          localStorage.setItem("authToken", result.data.token);
+        if (result.status) {
+          localStorage.setItem("authToken", result.token);
           alert("Logged in successfully");
           navigate("/admin");
         } else {
-          alert(result.data.message);
+          alert(result.message);
         }
       })
       .catch((err) => {
         alert("An error occurred. Please try again.");
-        console.log(err);
+        console.error("Fetch error:", err);
       });
   };
 
