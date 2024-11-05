@@ -41,7 +41,7 @@ function Aboutus() {
           We are a team of Computer Science students from <b>CSE-B</b> -{" "}
           <b>Karthikeya S</b>, <b>Ganesha M</b>, and <b>Hemanth Kumar R</b> -
           dedicated to applying technology to solve real-world challenges. Under
-          the guidance of our mentor, <b>Jayashree Mam</b>, we developed this
+          the guidance of our mentor, <b>Jayasri Mam</b>, we developed this
           project as our <b>minor project</b> to simplify the classroom
           availability tracking problem for students and teachers at{" "}
           <b>The National Institute of Engineering (North Campus)</b>. Our aim

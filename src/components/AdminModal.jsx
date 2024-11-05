@@ -15,8 +15,8 @@ const AdminModal = ({ onClose, onAddAdmin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddAdmin(adminData);
-    onClose(); // Close modal after adding admin
-    setAdminData({ name: "", email: "", password: "" }); // Reset form
+    onClose();
+    setAdminData({ name: "", email: "", password: "" });
   };
 
   return (
@@ -26,7 +26,7 @@ const AdminModal = ({ onClose, onAddAdmin }) => {
         onClick={onClose}
       ></div>
       <div className="bg-white rounded-lg p-5 z-50">
-        <h2 className="text-xl font-bold mb-4">Add Admin</h2>
+        <h2 className="text-xl font-bold mb-4 text-center">Add Admin</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-sm mb-2" htmlFor="name">
