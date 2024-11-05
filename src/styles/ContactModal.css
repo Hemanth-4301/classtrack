@@ -18,6 +18,8 @@
   flex-direction: column;
   gap: 20px;
   flex-wrap: wrap;
-  text-wrap: wrap;
+  background-color: #e0e0e0;
   justify-content: space-around;
+  padding: 20px;
+  border-radius: 20px;
 }
