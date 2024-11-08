@@ -178,17 +178,22 @@ function Admin() {
   };
 
   const handledeleteAll = async () => {
-    try {
-      setLoader(true);
-      const result = await axios.post(
-        "https://classtrack-api.vercel.app/classrooms/deleteAll",
-        {}
-      );
-      alert(result.data.message);
-      window.location.reload();
-      setLoader(false);
-    } catch (error) {
-      alert("Error while deleting all classrooms");
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete all classrooms?"
+    );
+    if (isConfirmed) {
+      try {
+        setLoader(true);
+        const result = await axios.post(
+          "https://classtrack-api.vercel.app/classrooms/deleteAll",
+          {}
+        );
+        alert(result.data.message);
+        window.location.reload();
+        setLoader(false);
+      } catch (error) {
+        alert("Error while deleting all classrooms");
+      }
     }
   };
 
@@ -284,18 +289,18 @@ function Admin() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center p-5 bg-[#e0e0e0]">
+      <div className="flex justify-center items-center p-5 bg-[#e0e0e0] gap-5">
         <button
           onClick={handleinsertAll}
           type="button"
-          className="px-2 py-4 bg-green-600  border-2 text-white border-green-600 hover:bg-transparent hover:text-black"
+          className="px-2 py-4 bg-green-600  rounded-xl  border-2 text-white border-green-600 hover:bg-transparent hover:text-black"
         >
           Add all classRooms
         </button>
         <button
           onClick={handledeleteAll}
           type="button"
-          className="px-2 py-4 bg-green-600  border-2 text-white border-green-600 hover:bg-transparent hover:text-black"
+          className="px-2 py-4 bg-red-600  rounded-xl border-2 text-white border-green-600 hover:bg-transparent hover:text-black"
         >
           Delete all classRooms
         </button>
