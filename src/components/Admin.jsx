@@ -176,6 +176,20 @@ function Admin() {
     }
   };
 
+  const handledeleteAll = async () => {
+    try {
+      setLoader(true);
+      const result = await axios.post(
+        "https://classtrack-api.vercel.app/classrooms/deleteAll",
+        {}
+      );
+      alert(result.data.message);
+      setLoader(false);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <>
       <Navbar onContactClick={openModal} />
@@ -275,6 +289,13 @@ function Admin() {
           className="px-2 py-4 bg-green-600  border-2 text-white border-green-600 hover:bg-transparent hover:text-black"
         >
           Add all classRooms
+        </button>
+        <button
+          onClick={handledeleteAll}
+          type="button"
+          className="px-2 py-4 bg-green-600  border-2 text-white border-green-600 hover:bg-transparent hover:text-black"
+        >
+          Delete all classRooms
         </button>
       </div>
 
