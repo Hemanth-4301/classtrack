@@ -293,16 +293,16 @@ function Admin() {
         <button
           onClick={handleinsertAll}
           type="button"
-          className="px-2 py-4 bg-green-600  rounded-xl  border-2 text-white border-green-600 hover:bg-transparent hover:text-black"
+          className="px-2 py-3 bg-green-600  rounded-xl  border-2 text-white border-green-600 hover:bg-transparent hover:text-black"
         >
-          Add all classRooms
+          Add all classrooms
         </button>
         <button
           onClick={handledeleteAll}
           type="button"
-          className="px-2 py-4 bg-red-600  rounded-xl border-2 text-white border-green-600 hover:bg-transparent hover:text-black"
+          className="px-2 py-3 bg-red-600  rounded-xl border-2 text-white border-red-600 hover:bg-transparent hover:text-black"
         >
-          Delete all classRooms
+          Delete all classrooms
         </button>
       </div>
 
