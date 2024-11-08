@@ -160,13 +160,13 @@ function Admin() {
     return daysOrder.indexOf(a.day) - daysOrder.indexOf(b.day);
   });
 
-  const handleinsertAll = async () => {
+  const handleInsertAll = async () => {
     try {
-      await axios
-        .post("https://classtrack-api.vercel.app/classrooms/insertAll", {})
-        .then((result) => {
-          alert(result.data.message);
-        });
+      const result = await axios.post(
+        "https://classtrack-api.vercel.app/classrooms/insertAll",
+        {}
+      );
+      alert(result.data.message);
     } catch (error) {
       alert("Error while adding all classrooms");
     }
