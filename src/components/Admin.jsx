@@ -163,16 +163,17 @@ function Admin() {
   });
 
   const handleinsertAll = async () => {
+    setLoader(true);
     try {
-      setLoader(true);
       const result = await axios.post(
         "https://classtrack-api.vercel.app/classrooms/insertAll",
         {}
       );
       alert(result.data.message);
+      window.location.reload();
       setLoader(false);
     } catch (error) {
-      alert(error);
+      alert("Error while inserting all classRooms");
     }
   };
 
@@ -184,9 +185,10 @@ function Admin() {
         {}
       );
       alert(result.data.message);
+      window.location.reload();
       setLoader(false);
     } catch (error) {
-      alert(error);
+      alert("Error while deleting all classrooms");
     }
   };
 
