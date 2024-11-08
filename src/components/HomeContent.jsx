@@ -130,6 +130,7 @@ function HomeContent() {
                 transition={{ duration: 0.7 }}
                 className="min-w-full border-collapse border border-black"
               >
+                <div className="max-h-[400px] overflow-y-auto">
                 <thead>
                   <tr>
                     <th colSpan={3}>
@@ -157,47 +158,47 @@ function HomeContent() {
                 </thead>
                 <tbody>
                   <div className="max-h-[400px] overflow-y-auto">
-                    {vacantClassrooms.length > 0 ? (
-                      vacantClassrooms.map((classroom, index) => (
-                        <tr
-                          key={classroom.roomNumber}
-                          className={`hover:bg-gray-100 ${
-                            index % 2 === 0 ? "bg-white" : "bg-gray-200"
-                          }`}
-                        >
-                          <td className="border border-black px-4 py-2 text-center">
-                            {classroom.duration}
-                          </td>
-                          <td className="border border-black px-4 py-2 text-center">
-                            {classroom.roomNumber}
-                          </td>
-                          <td className="border border-black px-4 py-2 text-center">
-                            {classroom.location}
-                          </td>
-                        </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        {selectedDay == "Saturday" ||
-                        selectedDay == "Sunday" ? (
-                          <td
-                            colSpan="3"
-                            className="border border-black px-4 py-2 text-center text-green-600"
-                          >
-                            All classrooms are free
-                          </td>
-                        ) : (
-                          <td
-                            colSpan="3"
-                            className="border border-black px-4 py-2 text-center text-red-500"
-                          >
-                            No vacant classrooms available.
-                          </td>
-                        )}
+                  {vacantClassrooms.length > 0 ? (
+                    vacantClassrooms.map((classroom, index) => (
+                      <tr
+                        key={classroom.roomNumber}
+                        className={`hover:bg-gray-100 ${
+                          index % 2 === 0 ? "bg-white" : "bg-gray-200"
+                        }`}
+                      >
+                        <td className="border border-black px-4 py-2 text-center">
+                          {classroom.duration}
+                        </td>
+                        <td className="border border-black px-4 py-2 text-center">
+                          {classroom.roomNumber}
+                        </td>
+                        <td className="border border-black px-4 py-2 text-center">
+                          {classroom.location}
+                        </td>
                       </tr>
-                    )}
-                  </div>
+                    ))
+                  ) : (
+                    <tr>
+                      {selectedDay == "Saturday" || selectedDay == "Sunday" ? (
+                        <td
+                          colSpan="3"
+                          className="border border-black px-4 py-2 text-center text-green-600"
+                        >
+                          All classrooms are free
+                        </td>
+                      ) : (
+                        <td
+                          colSpan="3"
+                          className="border border-black px-4 py-2 text-center text-red-500"
+                        >
+                          No vacant classrooms available.
+                        </td>
+                      )}
+                    </tr>
+                  )}
+    
                 </tbody>
+                </div>
               </motion.table>
             )}
           </div>
