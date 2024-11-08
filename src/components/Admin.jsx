@@ -226,7 +226,7 @@ function Admin() {
           Welcome to Admin Workspace
         </motion.h1>
 
-        <div className="p-5 text-lg md:text-2xl  flex flex-wrap justify-around items-center bg-gray-100">
+        <div className="admin-bg p-5 text-lg md:text-2xl  flex flex-wrap justify-around items-center bg-gray-100">
           <motion.img
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
