@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 function Admin() {
+  const [loader, setLoader] = useState(false);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -162,11 +164,13 @@ function Admin() {
 
   const handleinsertAll = async () => {
     try {
+      setLoader(true);
       const result = await axios.post(
         "https://classtrack-api.vercel.app/classrooms/insertAll",
         {}
       );
       alert(result.data.message);
+      setLoader(false);
     } catch (error) {
       alert(error);
     }
@@ -289,6 +293,12 @@ function Admin() {
               className="shadow-lg w-full max-w-full"
             >
               <thead>
+                {loader && (
+                  <div className="flex justify-center items-center m-5">
+                    <div className="loader"></div>
+                  </div>
+                )}
+
                 <tr>
                   <th
                     colSpan={5}

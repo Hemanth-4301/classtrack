@@ -35,7 +35,6 @@ function HomeContent() {
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
 
-      // Define a sorting order for the timings
       const timingOrder = [
         "9-10",
         "10-11",
@@ -45,7 +44,6 @@ function HomeContent() {
         "3:30-4:30",
       ];
 
-      // Sort data based on the timing order
       const sortedData = data.sort((a, b) => {
         return (
           timingOrder.indexOf(a.duration) - timingOrder.indexOf(b.duration)
