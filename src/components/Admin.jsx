@@ -168,7 +168,7 @@ function Admin() {
       );
       alert(result.data.message);
     } catch (error) {
-      alert("Error while adding all classrooms");
+      alert(error);
     }
   };
 
