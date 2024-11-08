@@ -163,22 +163,27 @@ function Admin() {
   });
 
   const handleinsertAll = async () => {
-    setLoader(true);
-    try {
-      const result = await axios.post(
-        "https://classtrack-api.vercel.app/classrooms/insertAll",
-        {}
-      );
-      alert(result.data.message);
-      window.location.reload();
-      setLoader(false);
-    } catch (error) {
-      alert("Error while inserting all classRooms");
+    let isConfirmed = window.confirm(
+      "You are going to set all the classrooms as vacant and old data will be over written as true"
+    );
+    if (isConfirmed) {
+      try {
+        setLoader(true);
+        const result = await axios.post(
+          "https://classtrack-api.vercel.app/classrooms/insertAll",
+          {}
+        );
+        alert(result.data.message);
+        window.location.reload();
+        setLoader(false);
+      } catch (error) {
+        alert("Error while inserting all classRooms");
+      }
     }
   };
 
   const handledeleteAll = async () => {
-    const isConfirmed = window.confirm(
+    let isConfirmed = window.confirm(
       "Are you sure you want to delete all classrooms?"
     );
     if (isConfirmed) {

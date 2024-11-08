@@ -153,7 +153,7 @@ function HomeContent() {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="overflow-y-auto max-h-[400px]">
                   {vacantClassrooms.length > 0 ? (
                     vacantClassrooms.map((classroom, index) => (
                       <tr
