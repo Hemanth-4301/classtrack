@@ -86,32 +86,34 @@ function HomeContent() {
           fontFamily: "Roboto Slab, serif",
         }}
       >
-        <motion.form
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="flex justify-center flex-wrap  items-center gap-5 md:gap-10 text-md md:text-xl  px-3"
-          onSubmit={handleSubmit}
-        >
-          <label>Select a Day</label>
-          <select
-            onChange={handleChange}
-            value={selectedDay}
-            className="border-2 bg-slate-100 h-10 rounded-lg outline-none border-slate-200  focus:border-black"
+        <div className="flex flex-warp justify-center items-center">
+          <motion.form
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-center flex-wrap  items-center gap-3 md:gap-10 text-md md:text-xl  px-3"
+            onSubmit={handleSubmit}
           >
-            {daysOfWeek.map((day, index) => (
-              <option key={index} value={day}>
-                {day}
-              </option>
-            ))}
-          </select>
-          <button
-            type="submit"
-            className="border-2 border-black bg-black hover:text-black text-white px-4 py-2 rounded-lg hover:bg-transparent transition"
-          >
-            Submit
-          </button>
-        </motion.form>
+            <label>Select a Day</label>
+            <select
+              onChange={handleChange}
+              value={selectedDay}
+              className="border-2 bg-slate-100 h-10 rounded-lg outline-none border-slate-200  focus:border-black"
+            >
+              {daysOfWeek.map((day, index) => (
+                <option key={index} value={day}>
+                  {day}
+                </option>
+              ))}
+            </select>
+            <button
+              type="submit"
+              className="border-2 border-black bg-black hover:text-black text-white px-4 py-2 rounded-lg hover:bg-transparent transition"
+            >
+              Submit
+            </button>
+          </motion.form>
+        </div>
 
         <div className="mt-4 w-full overflow-x-auto">
           {loader && (
@@ -120,7 +122,7 @@ function HomeContent() {
             </div>
           )}
 
-          <div className="flex flex-wrap mx-5 md:mx-20 lg:mx-40 justify-center max-h-[300px] overflow-y-scroll">
+          <div className="flex flex-wrap mx-5 md:mx-20 lg:mx-40 justify-center max-h-[400px] overflow-y-scroll">
             {!loader && (
               <motion.table
                 initial={{ opacity: 0, rotateY: 30 }}
