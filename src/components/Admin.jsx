@@ -156,9 +156,21 @@ function Admin() {
   };
 
   const sortedClassrooms = classrooms.sort((a, b) => {
-    const daysOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]; 
+    const daysOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
     return daysOrder.indexOf(a.day) - daysOrder.indexOf(b.day);
   });
+
+  const handleinsertAll = async () => {
+    try {
+      await axios
+        .post("https://classtrack-api.vercel.app/classrooms/insertAll", {})
+        .then((result) => {
+          alert(result.data.message);
+        });
+    } catch (error) {
+      alert("Error while adding all classrooms");
+    }
+  };
 
   return (
     <>
@@ -251,6 +263,15 @@ function Admin() {
             </table>
           </div>
         </div>
+      </div>
+      <div className="flex justify-center items-center p-5 bg-[#e0e0e0]">
+        <button
+          onClick={handleinsertAll}
+          type="button"
+          className="px-2 py-4 bg-green-600  border-2 text-white border-green-600 hover:bg-transparent hover:text-black"
+        >
+          Add all classRooms
+        </button>
       </div>
 
       {/* Classroom details section */}
