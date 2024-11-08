@@ -1,4 +1,9 @@
-/* Scrollbar for WebKit browsers */
+.admin-bg {
+  background-image: url("../images/bg1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 ::-webkit-scrollbar {
   width: 12px;
 }
