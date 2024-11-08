@@ -61,10 +61,12 @@ function Admin() {
 
   const fetchClassrooms = async () => {
     try {
+      setLoader(true);
       const result = await axios.get(
         "https://classtrack-api.vercel.app/classrooms/get"
       );
       setClassrooms(result.data);
+      setLoader(false);
     } catch (err) {
       console.log(err);
     }
@@ -315,6 +317,11 @@ function Admin() {
       <div className="p-5 text-lg md:text-2xl  flex flex-wrap justify-around items-center bg-gray-100 py-10 md:py-10 md:pb-20">
         <div className="w-full mt-5 md:mt-0">
           <div className="overflow-x-auto">
+            {loader && (
+              <div className="flex justify-center items-center m-5">
+                <div className="loader"></div>
+              </div>
+            )}
             <table
               border={2}
               style={{
@@ -326,12 +333,6 @@ function Admin() {
               className="shadow-lg w-full max-w-full"
             >
               <thead>
-                {loader && (
-                  <div className="flex justify-center items-center m-5">
-                    <div className="loader"></div>
-                  </div>
-                )}
-
                 <tr>
                   <th
                     colSpan={5}
