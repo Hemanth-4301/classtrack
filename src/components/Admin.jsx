@@ -3,7 +3,7 @@ import axios from "axios";
 import AdminModal from "./AdminModal";
 import ClassroomModal from "./ClassroomModal";
 import ContactModal from "./ContactModal";
-import "../styles/HomeContent.css";
+import "../styles/HomeContent.css"
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import admin from "../images/admin.png";
@@ -315,7 +315,7 @@ function Admin() {
         <button
           onClick={handledeleteAll}
           type="button"
-          className="px-2 py-4 bg-red-600  rounded-xl border-2 text-white border-red-600 hover:bg-transparent hover:text-black"
+          className="px-2 py-3 bg-red-600  rounded-xl border-2 text-white border-red-600 hover:bg-transparent hover:text-black"
         >
           Delete all classrooms
         </button>
