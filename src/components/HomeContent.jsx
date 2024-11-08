@@ -122,7 +122,7 @@ function HomeContent() {
             </div>
           )}
 
-          <div className="flex flex-wrap mx-5 md:mx-20 lg:mx-40 justify-center max-h-[400px] overflow-y-scroll">
+          <div className="flex flex-wrap mx-5 md:mx-20 lg:mx-40 justify-center ">
             {!loader && (
               <motion.table
                 initial={{ opacity: 0, rotateY: 30 }}
@@ -155,45 +155,48 @@ function HomeContent() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="overflow-y-auto max-h-[400px]">
-                  {vacantClassrooms.length > 0 ? (
-                    vacantClassrooms.map((classroom, index) => (
-                      <tr
-                        key={classroom.roomNumber}
-                        className={`hover:bg-gray-100 ${
-                          index % 2 === 0 ? "bg-white" : "bg-gray-200"
-                        }`}
-                      >
-                        <td className="border border-black px-4 py-2 text-center">
-                          {classroom.duration}
-                        </td>
-                        <td className="border border-black px-4 py-2 text-center">
-                          {classroom.roomNumber}
-                        </td>
-                        <td className="border border-black px-4 py-2 text-center">
-                          {classroom.location}
-                        </td>
+                <tbody>
+                  <div className="max-h-[400px] overflow-y-auto">
+                    {vacantClassrooms.length > 0 ? (
+                      vacantClassrooms.map((classroom, index) => (
+                        <tr
+                          key={classroom.roomNumber}
+                          className={`hover:bg-gray-100 ${
+                            index % 2 === 0 ? "bg-white" : "bg-gray-200"
+                          }`}
+                        >
+                          <td className="border border-black px-4 py-2 text-center">
+                            {classroom.duration}
+                          </td>
+                          <td className="border border-black px-4 py-2 text-center">
+                            {classroom.roomNumber}
+                          </td>
+                          <td className="border border-black px-4 py-2 text-center">
+                            {classroom.location}
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        {selectedDay == "Saturday" ||
+                        selectedDay == "Sunday" ? (
+                          <td
+                            colSpan="3"
+                            className="border border-black px-4 py-2 text-center text-green-600"
+                          >
+                            All classrooms are free
+                          </td>
+                        ) : (
+                          <td
+                            colSpan="3"
+                            className="border border-black px-4 py-2 text-center text-red-500"
+                          >
+                            No vacant classrooms available.
+                          </td>
+                        )}
                       </tr>
-                    ))
-                  ) : (
-                    <tr>
-                      {selectedDay == "Saturday" || selectedDay == "Sunday" ? (
-                        <td
-                          colSpan="3"
-                          className="border border-black px-4 py-2 text-center text-green-600"
-                        >
-                          All classrooms are free
-                        </td>
-                      ) : (
-                        <td
-                          colSpan="3"
-                          className="border border-black px-4 py-2 text-center text-red-500"
-                        >
-                          No vacant classrooms available.
-                        </td>
-                      )}
-                    </tr>
-                  )}
+                    )}
+                  </div>
                 </tbody>
               </motion.table>
             )}
