@@ -211,22 +211,21 @@ function Admin() {
     <>
       <Navbar onContactClick={openModal} />
       <ContactModal isOpen={isModalOpen} onClose={closeModal} />
+      <motion.h1
+        initial={{ y: 7 }}
+        whileInView={{ y: 0 }}
+        transition={{ duration: 1 }}
+        className="text-2xl md:text-4xl text-center p-5 bg-yellow-50"
+        style={{
+          fontFamily: "Roboto Slab, serif",
+          color: "#333",
+          letterSpacing: "1px",
+        }}
+      >
+        Welcome to Admin Workspace
+      </motion.h1>
       <div className="admin-bg">
-        <motion.h1
-          initial={{ y: 7 }}
-          whileInView={{ y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-2xl md:text-4xl text-center p-5 bg-yellow-50"
-          style={{
-            fontFamily: "Roboto Slab, serif",
-            color: "#333",
-            letterSpacing: "1px",
-          }}
-        >
-          Welcome to Admin Workspace
-        </motion.h1>
-
-        <div className="admin-bg p-5 text-lg md:text-2xl  flex flex-wrap justify-around items-center bg-gray-100">
+        <div className=" p-5 text-lg md:text-2xl  flex flex-wrap justify-around items-center bg-gray-100">
           <motion.img
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
