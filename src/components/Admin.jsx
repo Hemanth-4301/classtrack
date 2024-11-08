@@ -160,7 +160,7 @@ function Admin() {
     return daysOrder.indexOf(a.day) - daysOrder.indexOf(b.day);
   });
 
-  const handleInsertAll = async () => {
+  const handleinsertAll = async () => {
     try {
       const result = await axios.post(
         "https://classtrack-api.vercel.app/classrooms/insertAll",
