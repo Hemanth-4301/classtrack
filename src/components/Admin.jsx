@@ -47,10 +47,12 @@ function Admin() {
 
   const fetchAdmins = async () => {
     try {
+      setLoader(true);
       const result = await axios.get(
         "https://classtrack-api.vercel.app/admins/get"
       );
       setAdmins(result.data);
+      setLoader(false);
     } catch (err) {
       console.log(err);
       if (err.response && err.response.status === 401) {
@@ -235,6 +237,11 @@ function Admin() {
           width={400}
           alt="Admin workspace tag"
         />
+        {loader && (
+          <div className="flex justify-center items-center m-5">
+            <div className="loader"></div>
+          </div>
+        )}
         <div className="w-full md:w-1/2 mt-5 md:mt-0">
           <div className="overflow-x-auto">
             <table

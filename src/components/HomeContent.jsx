@@ -120,7 +120,7 @@ function HomeContent() {
             </div>
           )}
 
-          <div className="flex flex-wrap mx-5 md:mx-20 lg:mx-40 justify-center">
+          <div className="flex flex-wrap mx-5 md:mx-20 lg:mx-40 justify-center max-h-[300px] overflow-y-scroll">
             {!loader && (
               <motion.table
                 initial={{ opacity: 0, rotateY: 30 }}
