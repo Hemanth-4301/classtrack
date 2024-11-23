@@ -1,7 +1,8 @@
 Classroom Tracker 
+
 🚀 A Smart Solution for Classroom Availability Management at NIE
 
-📝 Description
+📝 Description:
 This web application is designed to assist students and faculty at NIE in tracking classroom availability based on day and time slots. The system fetches data from a robust database to display real-time classroom availability and streamlines the process of finding free classrooms.
 
 Key Features:
