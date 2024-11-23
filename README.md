@@ -1,6 +1,42 @@
-#Classrooms Tracker
-Description: This a web application for NIE to help students and faculty track classroom availability based on day and time slots. The system fetches data from a database to display real-time availability of classrooms. It includes features like admin controls, vacancy tracking, and a user-friendly interface for ease of access.
+Classroom Tracker 
+🚀 A Smart Solution for Classroom Availability Management at NIE
 
-Implementation: Designed a MongoDB schema to store and manage classroom data, including fields like day, time slot, room number, and location. Built an admin panel for managing classroom details, with authentication and token-based access. Integrated the backend API with the React.js frontend, enabling real-time data updates and streamlined classroom management.
-   
-Technologies Used: React.js, Tailwind CSS, Node.js, Express.js, MongoDB, JWT Authentication
+📝 Description
+This web application is designed to assist students and faculty at NIE in tracking classroom availability based on day and time slots. The system fetches data from a robust database to display real-time classroom availability and streamlines the process of finding free classrooms.
+
+Key Features:
+🔑 Admin Controls: Manage classroom details with secure authentication.
+🏫 Real-Time Vacancy Tracking: Stay updated on classroom availability at any given time.
+💻 User-Friendly Interface: Built with simplicity and ease of access in mind.
+💡 Implementation
+Database Design:
+Designed a MongoDB schema to efficiently store and manage classroom data, including:
+
+🗓️ Day
+⏰ Time Slot
+🏢 Room Number
+📍 Location
+Admin Panel:
+Built an intuitive admin panel for adding, updating, and deleting classroom records. Authentication is handled with JWT tokens to ensure secure access.
+
+Frontend-Backend Integration:
+Integrated a RESTful backend API with a React.js frontend, allowing seamless real-time updates and a smooth user experience.
+
+🛠️ Technologies Used
+Frontend:
+React.js
+Tailwind CSS
+
+Backend:
+Node.js
+Express.js
+
+Database:
+MongoDB
+
+Authentication:
+JWT (JSON Web Tokens)
+
+🌐 Live Demo
+🔗 https://nie-classtrack.vercel.app
+
