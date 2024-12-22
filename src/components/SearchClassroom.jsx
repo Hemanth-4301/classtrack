@@ -13,7 +13,7 @@ const SearchClassroom = () => {
     e.preventDefault();
     setError("");
     setResults([]);
-    setLoader(true); // Show loader
+    setLoader(true);
 
     try {
       const normalizedRoomNumber = roomNumber.trim().toLowerCase();
@@ -94,7 +94,7 @@ const SearchClassroom = () => {
             </h2>
             <p className="text-lg">Location: {results[0].location}</p>
           </div>
-          <div className="overflow-x-auto max-h-[350px]">
+          <div className="overflow-x-auto max-h-[350px] mx-5 md:mx-20 lg:mx-40">
             <table className="w-full border-collapse border border-slate-600 ">
               <thead>
                 <tr className="bg-slate-300 text-white ">
