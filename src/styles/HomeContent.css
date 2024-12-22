@@ -8,16 +8,16 @@
   width: 12px;
 }
 ::-webkit-scrollbar-track {
-  background: blue;
+  background: slategray;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: blue;
+  background-color: slategray;
   border-radius: 6px;
-  border: 3px solid blue;
+  border: 3px solid slategray;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: blue;
+  background-color: slategray;
 }
 
 /* Scrollbar for Firefox */
