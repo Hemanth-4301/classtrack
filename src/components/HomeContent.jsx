@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/HomeContent.css";
 import { motion } from "framer-motion";
 import tech from "../images/tech.png";
+import SearchClassroom from "./SearchClassroom";
 
 function HomeContent() {
   const today = new Date();
@@ -78,8 +79,17 @@ function HomeContent() {
       id="intro"
       style={{
         fontFamily: "Roboto Slab, serif",
+        backgroundColor: "#e0e0e0",
       }}
     >
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="text-center p-4 bg-slate-300 text-xl md:text-2xl lg:text-3xl py-[14px] mt-10"
+      >
+        <b>Search by Day</b>
+      </motion.h1>
       <div
         className="flex justify-center flex-col gap-5 items-center bg-[#e0e0e0] py-10"
         style={{
@@ -87,32 +97,32 @@ function HomeContent() {
         }}
       >
         <div className="flex flex-warp justify-center items-center">
-        <motion.form
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="flex justify-center flex-wrap  items-center gap-3 md:gap-10 text-md md:text-xl  px-3"
-          onSubmit={handleSubmit}
-        >
-          <label>Select a Day</label>
-          <select
-            onChange={handleChange}
-            value={selectedDay}
-            className="border-2 bg-slate-100 h-10 rounded-lg outline-none border-slate-200  focus:border-black"
+          <motion.form
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-center flex-wrap  items-center gap-3 md:gap-10 text-md md:text-xl  px-3"
+            onSubmit={handleSubmit}
           >
-            {daysOfWeek.map((day, index) => (
-              <option key={index} value={day}>
-                {day}
-              </option>
-            ))}
-          </select>
-          <button
-            type="submit"
-            className="border-2 border-black bg-black hover:text-black text-white px-4 py-2 rounded-lg hover:bg-transparent transition"
-          >
-            Submit
-          </button>
-        </motion.form>
+            <label>Select a Day</label>
+            <select
+              onChange={handleChange}
+              value={selectedDay}
+              className="border-2 bg-slate-100 h-10 rounded-lg outline-none border-slate-200  focus:border-black"
+            >
+              {daysOfWeek.map((day, index) => (
+                <option key={index} value={day}>
+                  {day}
+                </option>
+              ))}
+            </select>
+            <button
+              type="submit"
+              className="border-2 border-black bg-black hover:text-black text-white px-4 py-2 rounded-lg hover:bg-transparent transition"
+            >
+              Submit
+            </button>
+          </motion.form>
         </div>
 
         <div className="mt-4 w-full overflow-x-auto">
@@ -199,6 +209,10 @@ function HomeContent() {
             )}
           </div>
         </div>
+      </div>
+
+      <div>
+        <SearchClassroom />
       </div>
 
       <div className="bg-[#e0e0e0] pb-4 pt-5 lg:pt-10">
