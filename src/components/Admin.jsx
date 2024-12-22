@@ -50,7 +50,7 @@ function Admin() {
     try {
       setLoader(true);
       const result = await axios.get(
-        "https://classtrack-api.vercel.app/admins/get"
+        "https://classtrack-api.onrender.com/admins/get"
       );
       setAdmins(result.data);
       setLoader(false);
@@ -66,7 +66,7 @@ function Admin() {
     try {
       setLoader(true);
       const result = await axios.get(
-        "https://classtrack-api.vercel.app/classrooms/get"
+        "https://classtrack-api.onrender.com/classrooms/get"
       );
       setClassrooms(result.data);
       setLoader(false);
@@ -78,7 +78,7 @@ function Admin() {
   const handleAddAdmin = async (adminData) => {
     try {
       const result = await axios.post(
-        "https://classtrack-api.vercel.app/admins/add",
+        "https://classtrack-api.onrender.com/admins/add",
         adminData
       );
       alert(result.data.message);
@@ -94,7 +94,7 @@ function Admin() {
   const handleDeleteAdmin = async (adminId) => {
     try {
       const result = await axios.delete(
-        `https://classtrack-api.vercel.app/admins/delete/${adminId}`
+        `https://classtrack-api.onrender.com/admins/delete/${adminId}`
       );
       alert(result.data.message);
       setAdmins((prevAdmins) =>
@@ -109,7 +109,7 @@ function Admin() {
   const handleAddClassroom = async (classroomData) => {
     try {
       const result = await axios.post(
-        "https://classtrack-api.vercel.app/classrooms/add",
+        "https://classtrack-api.onrender.com/classrooms/add",
         classroomData
       );
       setClassrooms((prevClassrooms) => [...prevClassrooms, result.data]);
@@ -124,7 +124,7 @@ function Admin() {
   const handleUpdateClassroom = async (classroomData) => {
     try {
       const result = await axios.put(
-        `https://classtrack-api.vercel.app/classrooms/update/${currentClassroom._id}`,
+        `https://classtrack-api.onrender.com/classrooms/update/${currentClassroom._id}`,
         classroomData
       );
       setClassrooms((prevClassrooms) =>
@@ -149,7 +149,7 @@ function Admin() {
   const handleDeleteClassroom = async (classroomId) => {
     try {
       const result = await axios.delete(
-        `https://classtrack-api.vercel.app/classrooms/delete/${classroomId}`
+        `https://classtrack-api.onrender.com/classrooms/delete/${classroomId}`
       );
       alert(result.data.message);
       setClassrooms((prevClassrooms) =>
@@ -175,7 +175,7 @@ function Admin() {
       try {
         setLoader(true);
         const result = await axios.post(
-          "https://classtrack-api.vercel.app/classrooms/insertAll",
+          "https://classtrack-api.onrender.com/classrooms/insertAll",
           {}
         );
         alert(result.data.message);
@@ -195,7 +195,7 @@ function Admin() {
       try {
         setLoader(true);
         const result = await axios.post(
-          "https://classtrack-api.vercel.app/classrooms/deleteAll",
+          "https://classtrack-api.onrender.com/classrooms/deleteAll",
           {}
         );
         alert(result.data.message);

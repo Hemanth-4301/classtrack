@@ -28,7 +28,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("https://classtrack-api.vercel.app/admins/find", {
+    fetch("https://classtrack-api.onrender.com/admins/find", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

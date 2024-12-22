@@ -21,7 +21,7 @@ const SearchClassroom = () => {
       setTimeout(async () => {
         try {
           const response = await axios.get(
-            `https://classtrack-api.vercel.app/classrooms/search?roomNumber=${normalizedRoomNumber}`
+            `https://classtrack-api.onrender.com/classrooms/search?roomNumber=${normalizedRoomNumber}`
           );
           setResults(response.data.data);
         } catch (err) {
