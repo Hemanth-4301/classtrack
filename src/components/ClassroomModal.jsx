@@ -79,6 +79,7 @@ const ClassroomModal = ({
               <option value="10-11">10-11</option>
               <option value="11:30-12:30">11:30-12:30</option>
               <option value="12:30-1:30">12:30-1:30</option>
+              <option value="1:30-2:30">1:30-2:30</option>
               <option value="2:30-3:30">2:30-3:30</option>
               <option value="3:30-4:30">3:30-4:30</option>
               <option value="4:30-5:30">4:30-5:30</option>
