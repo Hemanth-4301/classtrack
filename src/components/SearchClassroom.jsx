@@ -17,13 +17,22 @@ const SearchClassroom = () => {
 
     try {
       const normalizedRoomNumber = roomNumber.trim().toLowerCase();
-      // Simulate loader duration
       setTimeout(async () => {
         try {
           const response = await axios.get(
             `https://classtrack-api.onrender.com/classrooms/search?roomNumber=${normalizedRoomNumber}`
           );
-          setResults(response.data.data);
+
+          // Filter results to include only vacant slots
+          const vacantResults = response.data.data.filter(
+            (slot) => slot.vacant
+          );
+
+          if (vacantResults.length === 0) {
+            setError("No vacant slots found for this room");
+          } else {
+            setResults(vacantResults);
+          }
         } catch (err) {
           if (err.response && err.response.status === 404) {
             setError("No vacant slots found for this room");
@@ -31,9 +40,9 @@ const SearchClassroom = () => {
             setError("An error occurred while searching");
           }
         } finally {
-          setLoader(false); // Hide loader after 1.5 seconds
+          setLoader(false);
         }
-      }, 1500); // Simulate delay for the loader
+      }, 1500);
     } catch (err) {
       setLoader(false);
       setError("An error occurred while searching");
@@ -41,24 +50,24 @@ const SearchClassroom = () => {
   };
 
   return (
-    <div className="search-classroom  mb-8 md:mb-15 bg-[#e0e0e0] text-black ">
+    <div className="search-classroom mb-8 md:mb-15 bg-[#e0e0e0] text-black">
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-center  bg-slate-300 text-xl md:text-2xl lg:text-3xl py-[14px] my-6 md:my-10"
+        className="text-center bg-slate-300 text-xl md:text-2xl lg:text-3xl py-[14px] my-6 md:my-10"
       >
         <b>Search by Room Number</b>
       </motion.h1>
       <div className="flex justify-center">
         <p className="border-2 border-black p-3 text-center rounded-lg m-3 mb-5 md:mb-10 mx-5">
-          For labs enter in this format: <b>labName-lab labNumber</b> <br></br>
-          Ex: <b>AIML-lab 4</b>{" "}
+          For labs enter in this format: <b>labName-lab labNumber</b> <br />
+          Ex: <b>AIML-lab 4</b>
         </p>
       </div>
       <form
         onSubmit={handleSearch}
-        className="mb-8 flex  items-center justify-center gap-1 md:gap-4 mx-8"
+        className="mb-8 flex items-center justify-center gap-1 md:gap-4 mx-8"
       >
         <input
           type="text"
@@ -75,17 +84,14 @@ const SearchClassroom = () => {
         </button>
       </form>
 
-      {/* Show loader */}
       {loader && (
         <div className="flex justify-center items-center m-5">
           <div className="loader"></div>
         </div>
       )}
 
-      {/* Show error message if no loader and error exists */}
       {!loader && error && <p className="text-red-500 text-center">{error}</p>}
 
-      {/* Only show results if loader is false */}
       {!loader && results.length > 0 && (
         <div className="classroom-results max-w-4xl mx-auto mt-8">
           <div className="mb-4 text-center">
@@ -95,13 +101,13 @@ const SearchClassroom = () => {
             <p className="text-lg">Location: {results[0].location}</p>
           </div>
           <div className="overflow-x-auto max-h-[350px] mx-5 md:mx-20 lg:mx-40">
-            <table className="w-full border-collapse border border-slate-600 ">
+            <table className="w-full border-collapse border border-slate-600">
               <thead>
-                <tr className="bg-slate-300 text-white ">
-                  <th className="border text-center  border-black px-4 py-2  text-black font-semibold">
+                <tr className="bg-slate-300 text-white">
+                  <th className="border text-center border-black px-4 py-2 text-black font-semibold">
                     Day
                   </th>
-                  <th className="border text-center border-black px-4 py-2  text-black font-semibold">
+                  <th className="border text-center border-black px-4 py-2 text-black font-semibold">
                     Timings
                   </th>
                 </tr>
@@ -110,7 +116,7 @@ const SearchClassroom = () => {
                 {results.map((slot, index) => (
                   <tr
                     key={index}
-                    className="hover:bg-slate-300 hover:text-black  transition"
+                    className="hover:bg-slate-300 hover:text-black transition"
                   >
                     <td className="border border-slate-600 p-2 text-center">
                       {slot.day}
