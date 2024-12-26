@@ -3,8 +3,9 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import "../styles/HomeContent.css";
 
-const SearchByTime = () => {
+const SearchByTimeAndDay = () => {
   const [selectedTime, setSelectedTime] = useState("");
+  const [selectedDay, setSelectedDay] = useState("");
   const [classrooms, setClassrooms] = useState([]);
   const [error, setError] = useState("");
   const [loader, setLoader] = useState(false);
@@ -19,6 +20,16 @@ const SearchByTime = () => {
     "3:30-4:30",
   ];
 
+  const days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
   const handleSearch = async (e) => {
     e.preventDefault();
     setError("");
@@ -29,10 +40,13 @@ const SearchByTime = () => {
       setTimeout(async () => {
         try {
           const response = await axios.get(
-            `https://classtrack-api.onrender.com/classrooms/searchByTime?duration=${selectedTime}`
+            `https://classtrack-api.onrender.com/classrooms/searchByTimeAndDay`,
+            {
+              params: { duration: selectedTime, day: selectedDay },
+            }
           );
           if (response.data.length === 0) {
-            setError("No classrooms available for the selected time.");
+            setError("No classrooms available for the selected time and day.");
           } else {
             setClassrooms(response.data);
           }
@@ -49,23 +63,36 @@ const SearchByTime = () => {
   };
 
   return (
-    <div className="search-classroom mb-8 md:mb-15  bg-[#e0e0e0] text-black">
+    <div className="search-classroom mb-8 md:mb-15 bg-[#e0e0e0] text-black">
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
         className="text-center bg-slate-300 text-xl md:text-2xl lg:text-3xl py-[14px] my-12 md:my-14"
       >
-        <b>Search by Time Slot</b>
+        <b>Search by Time Slot and Day</b>
       </motion.h1>
       <form
         onSubmit={handleSearch}
-        className="mb-8 flex items-center justify-center gap-1 md:gap-4 mx-8"
+        className="mb-8 flex flex-wrap items-center justify-center gap-3 md:gap-4 mx-8"
       >
+        <select
+          value={selectedDay}
+          onChange={(e) => setSelectedDay(e.target.value)}
+          className="border border-slate-600 bg-white p-2 rounded w-full md:w-auto text-center"
+        >
+          <option value="">-- Select Day --</option>
+          {days.map((day, index) => (
+            <option key={index} value={day}>
+              {day}
+            </option>
+          ))}
+        </select>
+
         <select
           value={selectedTime}
           onChange={(e) => setSelectedTime(e.target.value)}
-          className="border border-slate-600 bg-white p-2 rounded w-full md:w-auto"
+          className="border border-slate-600 bg-white p-2 rounded w-full md:w-auto text-center"
         >
           <option value="">-- Select Time Slot --</option>
           {timings.map((time, index) => (
@@ -74,6 +101,7 @@ const SearchByTime = () => {
             </option>
           ))}
         </select>
+
         <button
           type="submit"
           className="bg-black text-white p-2 rounded-lg hover:bg-transparent hover:text-black border-2 border-black transition"
@@ -127,4 +155,4 @@ const SearchByTime = () => {
   );
 };
 
-export default SearchByTime;
+export default SearchByTimeAndDay;

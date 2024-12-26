@@ -3,7 +3,7 @@ import "../styles/HomeContent.css";
 import { motion } from "framer-motion";
 import tech from "../images/tech.png";
 import SearchClassroom from "./SearchClassroom";
-import SearchByTime from "./SearchByTime";
+import SearchByTimeAndDay from "./SearchByTimeAndDay";
 
 function HomeContent() {
   const today = new Date();
@@ -217,7 +217,7 @@ function HomeContent() {
         <SearchClassroom />
       </div>
       <div>
-        <SearchByTime />
+        <SearchByTimeAndDay />
       </div>
 
       <div className="bg-[#e0e0e0] pb-4 pt-5 lg:pt-10">
