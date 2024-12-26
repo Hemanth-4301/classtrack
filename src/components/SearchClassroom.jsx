@@ -74,7 +74,7 @@ const SearchClassroom = () => {
           placeholder="Enter Classroom Number"
           value={roomNumber}
           onChange={(e) => setRoomNumber(e.target.value)}
-          className="border-2 border-slate-600 bg-white p-2 rounded w-full md:w-auto focus:border-black"
+          className="border-2 border-slate-600 outline-none bg-white p-2 rounded w-full md:w-auto focus:border-black"
         />
         <button
           type="submit"

@@ -83,7 +83,7 @@ const SearchByTimeAndDay = () => {
         <select
           value={selectedDay}
           onChange={(e) => setSelectedDay(e.target.value)}
-          className="border-2 border-slate-600 bg-slate-100 p-2 rounded-lg w-full md:w-auto text-center focus:border-black"
+          className="border-2 border-slate-600 outline-none bg-slate-100 p-2 rounded-lg w-full md:w-auto text-center focus:border-black"
         >
           <option value="">-- Select Day --</option>
           {days.map((day, index) => (
@@ -96,7 +96,7 @@ const SearchByTimeAndDay = () => {
         <select
           value={selectedTime}
           onChange={(e) => setSelectedTime(e.target.value)}
-          className="border-2 border-slate-600 bg-slate-100 p-2 rounded-lg w-full md:w-auto text-center focus:border-black"
+          className="border-2 border-slate-600 outline-none bg-slate-100 p-2 rounded-lg w-full md:w-auto text-center focus:border-black"
         >
           <option value="">-- Select Time Slot --</option>
           {timings.map((time, index) => (
