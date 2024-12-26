@@ -24,7 +24,6 @@ const Report = ({ file }) => {
           }}
           className="border-2 border-black rounded-lg p-3"
         >
-          {/* Use the matching worker version */}
           <Worker workerUrl="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js">
             <Viewer fileUrl={pdfFile} />
           </Worker>
