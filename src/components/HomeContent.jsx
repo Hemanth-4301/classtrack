@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import tech from "../images/tech.png";
 import SearchClassroom from "./SearchClassroom";
 import SearchByTimeAndDay from "./SearchByTimeAndDay";
+import Report from "./Report";
+import file from "../files/report.pdf";
 
 function HomeContent() {
   const today = new Date();
@@ -389,6 +391,9 @@ function HomeContent() {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <Report file={file} />
       </div>
     </section>
   );
