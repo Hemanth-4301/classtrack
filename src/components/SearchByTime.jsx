@@ -29,7 +29,7 @@ const SearchByTime = () => {
       setTimeout(async () => {
         try {
           const response = await axios.get(
-            `http://localhost:5000/classrooms/searchByTime?duration=${selectedTime}`
+            `https://classtrack-api.onrender.com/classrooms/searchByTime?duration=${selectedTime}`
           );
           if (response.data.length === 0) {
             setError("No classrooms available for the selected time.");
