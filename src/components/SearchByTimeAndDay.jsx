@@ -32,6 +32,10 @@ const SearchByTimeAndDay = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
+    if (selectedDay === "Saturday" || selectedDay === "Sunday") {
+      setError("All classrooms are free on Saturday and Sunday.");
+      return;
+    }
     setError("");
     setClassrooms([]);
     setLoader(true);
@@ -116,7 +120,17 @@ const SearchByTimeAndDay = () => {
         </div>
       )}
 
-      {!loader && error && <p className="text-red-500 text-center">{error}</p>}
+      {!loader && error && (
+        <p
+          className={
+            selectedDay === "Sunday" || "Saturday"
+              ? "text-green-600 text-center"
+              : "text-red-500 text-center"
+          }
+        >
+          {error}
+        </p>
+      )}
 
       {!loader && classrooms.length > 0 && (
         <div className="classroom-results max-w-4xl mx-auto mt-8">
