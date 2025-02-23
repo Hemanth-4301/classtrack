@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import tech from "../images/tech.png";
 import SearchClassroom from "./SearchClassroom";
 import SearchByTimeAndDay from "./SearchByTimeAndDay";
-import Report from "./Report";
-import file from "../files/report.pdf";
 
 function HomeContent() {
   const today = new Date();
@@ -33,9 +31,11 @@ function HomeContent() {
 
   const fetchVacantClassrooms = async (day) => {
     try {
+      setLoader(true);
       const response = await fetch(
         `https://classtrack-api.onrender.com/classrooms/vacant/${day}`
       );
+
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
 
@@ -58,12 +58,10 @@ function HomeContent() {
       setVacantClassrooms(sortedData);
     } catch (error) {
       console.log("Error fetching vacant classrooms:" + error);
+    } finally {
+      setLoader(false); // Move setLoader(false) here
     }
   };
-
-  // useEffect(() => {
-  //   fetchVacantClassrooms(selectedDay);
-  // }, [selectedDay]);
 
   useEffect(() => {
     fetchVacantClassrooms(dayName);
@@ -71,11 +69,7 @@ function HomeContent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchVacantClassrooms(selectedDay);
-    setLoader(true);
-    setTimeout(() => {
-      setLoader(false);
-    }, 1500);
+    fetchVacantClassrooms(selectedDay); // Remove setLoader(false) from here
   };
 
   return (
@@ -391,9 +385,6 @@ function HomeContent() {
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <Report file={file} />
       </div>
     </section>
   );
