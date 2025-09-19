@@ -7,6 +7,7 @@ import { FaLinkedin, FaInstagram } from "react-icons/fa";
 import karthi from "../images/karthi.jpg";
 import ganu from "../images/ganu.jpg";
 import hem from "../images/hem.jpg";
+import harshi from "../images/harshitha.jpg";
 import mam from "../images/jayasriMam.jpg";
 import { motion } from "framer-motion";
 
@@ -39,11 +40,12 @@ function Aboutus() {
           style={{ lineHeight: "1.8rem", fontFamily: "Roboto Slab, serif" }}
         >
           We are a team of Computer Science students from <b>CSE-B</b> -{" "}
-          <b>Karthikeya S</b>, <b>Ganesha M</b>, and <b>Hemanth Kumar R</b> -
-          dedicated to applying technology to solve real-world challenges. Under
-          the guidance of our mentor, <b>Jayasri Mam</b>, we developed this
-          project as our <b>minor project</b> to simplify the classroom
-          availability tracking problem for students and teachers at{" "}
+          <b>Karthikeya S</b>, <b>Ganesha M</b>, <b>Hemanth Kumar R</b> and{" "}
+          <b>Harshitha S Shankar</b> - dedicated to applying technology to solve
+          real-world challenges. Under the guidance of our mentor,{" "}
+          <b>Jayasri Mam</b>, we developed this project as our{" "}
+          <b>minor project</b> to simplify the classroom availability tracking
+          problem for students and teachers at{" "}
           <b>The National Institute of Engineering (North Campus)</b>. Our aim
           is to create clear, effective tools that support the educational
           community.
@@ -165,6 +167,33 @@ function Aboutus() {
               rel="noopener noreferrer"
             >
               <FaInstagram className="text-black text-2xl hover:text-pink-700" />
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Harshitha S Shankar Card */}
+        <motion.div
+          initial={{ opacity: 0.6, rotateY: 180 }}
+          whileInView={{ opacity: 1, rotateY: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{
+            fontFamily: "Roboto Slab, serif",
+          }}
+          className="w-64 bg-orange-50 rounded-lg  overflow-hidden flex flex-col items-center p-5"
+        >
+          <img
+            src={harshi}
+            alt="Harshitha S Shankar"
+            className="w-32 h-32 rounded-full object-cover mb-4"
+          />
+          <h2 className="text-lg font-semibold mb-2">Harshitha S Shankar</h2>
+          <div className="flex gap-4">
+            <a
+              href="http://www.linkedin.com/in/harshitha-s-shankar-324935255"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin className="text-black text-2xl hover:text-blue-700" />
             </a>
           </div>
         </motion.div>
